@@ -1,0 +1,19 @@
+#PBS -S /bin/bash
+#PBS -N scATAC_run
+#PBS -o /group/tran3/gchahal/scATAC_analysis_Vento_raw/output/
+#PBS -l walltime=100:00:00
+#PBS -q batch
+#PBS -l mem=200GB
+#PBS -M ngocduy.tran@mcri.edu.au
+#PBS -l nodes=1:ppn=12
+#PBS -A tran3
+ 
+module load cellranger-atac
+ 
+cd /group/tran3/gchahal/scATAC_analysis_Vento_raw/
+cellranger-atac count --id=FCAGND8768482 \
+                        --reference=/group/tran3/gchahal/scATAC_analysis_Vento_raw/refdata-cellranger-arc-GRCh38-2024-A/ \
+                        --fastqs=/group/tran3/gchahal/scATAC_analysis_Vento_raw/fastq_path \
+                        --sample=FCAGND8768482 \
+                        --localcores=12 \
+                        --localmem=200
