@@ -433,8 +433,7 @@ For questions, issues, or collaborations, please contact:
 
 ### Laboratory Information
 
-**Ramialison Laboratory**
-- Transcriptomics and Bioinformatics
+**Transcriptomics and Bioinformatics**
 - Murdoch Children's Research Institute
 - 50 Flemington Road, Parkville VIC 3052, Australia
 - Web: [Transcriptomics and Bioinformatics Lab - Murdoch Children's Research Institute](https://www.mcri.edu.au/research/research-areas/stem-cell-medicine/transcriptomics-and-bioinformatics)
