@@ -279,12 +279,6 @@ python LD_getSubsets.py \
     ./output_directory/
 ```
 
-**Algorithm**:
-1. **Union peak set** creation across all tissues
-2. **Accessibility comparison** using BEDTools intersect
-3. **Statistical testing** for tissue-specificity (Fisher's exact test)
-4. **FDR correction** for multiple comparisons
-
 #### Step 4: Cell-Type-Specific Analysis
 
 **Notebooks**: 
@@ -334,15 +328,6 @@ python scripts/tissue_specific_cre_pipeline/LD_getSubsets.py \
 jupyter notebook scripts/investigation_ovary.ipynb
 ```
 
-### Configuration Examples
-
-**Sample metadata format** ([`data/meta.csv`](./data/meta.csv)):
-```csv
-sample,donor,sex,PCW,lineage,cell_type
-FCAGND8289580,F88,male,11.0,CoelEpi,Coelomic epithelium
-FCAGND8289580,F88,male,11.0,Sertoli,Sertoli cells
-```
-
 **Pipeline configuration**:
 ```python
 # Edit in notebook first cell
@@ -355,17 +340,6 @@ sample_paths = {
 chosen_weeks = [8.6, 8.8, 9.0]
 gender = 'female'  # or 'male'
 ```
-
-### Batch Processing
-
-For multiple samples, use the PBS array job system:
-
-```bash
-# Submit array job for all samples
-qsub -t 1-N PBS_scripts/scATAC_fastq_pipeline_single_sample1.pbs
-```
-
-Where N is the total number of samples.
 
 ## 📊 Results & Outputs
 
@@ -399,39 +373,6 @@ Where N is the total number of samples.
 - [`p75_male_unique_genes.txt`](./results/gender-specific/p75_male_unique_genes.txt) - Genes near male-specific cREs
 - [`p75_intersection_genes.txt`](./results/gender-specific/p75_intersection_genes.txt) - Genes common to both sexes
 
-### Statistical Summary
-
-| Analysis Level | Total cREs | Specific cREs | Enriched Pathways |
-|---------------|------------|---------------|-------------------|
-| **Tissue-specific** | 125,000 | 45,000 | 1,250 |
-| **Sex-specific** | 85,000 | 12,000 | 890 |
-| **Cell-type-specific** | 65,000 | 8,500 | 420 |
-
-### Key Biological Findings
-
-1. **Novel DSD genes**: 23 previously uncharacterized genes with gonad-specific cREs
-2. **Cell-type markers**: 156 cell-type-specific accessibility signatures
-3. **Regulatory networks**: 12 major gene regulatory modules in testis development
-4. **Clinical relevance**: 67% of known DSD genes have associated specific cREs
-
-## 📈 Performance Metrics
-
-### Computational Requirements
-
-| Analysis Step | Runtime | Memory | CPU Cores |
-|---------------|---------|---------|-----------|
-| Peak Calling | 4-8 hours | 200GB | 12 |
-| QC & Filtering | 2-4 hours | 64GB | 8 |
-| Tissue Analysis | 30 min | 32GB | 4 |
-| Cell-type Analysis | 1-2 hours | 32GB | 4 |
-
-### Validation Metrics
-
-- **Peak calling quality**: TSS enrichment >7, FRiP score >0.3
-- **Cell type purity**: Average silhouette score >0.4
-- **Tissue specificity**: Fisher's exact test FDR <0.05
-- **Functional enrichment**: GREAT p-value <0.001
-
 ## 🏥 Clinical Applications
 
 ### Diagnostic Utility
@@ -443,24 +384,12 @@ The identified cREs and associated genes provide:
 3. **Pathway analysis**: Understand disease mechanisms
 4. **Therapeutic targets**: Identify druggable regulatory networks
 
-### Case Study Examples
-
-**Example 1**: Patient with 46,XY DSD and SRY mutation
-- Pipeline identified 12 SRY-regulated cREs
-- 8/12 regions showed reduced accessibility in patient cells
-- Functional validation confirmed impaired regulatory cascade
-
-**Example 2**: Ovotesticular DSD with unknown genetic cause
-- Tissue-specific analysis revealed disrupted cRE in WT1 locus
-- Cell-type mapping showed abnormal Sertoli cell development
-- Guided targeted sequencing identified rare WT1 variant
-
 ## 📚 Citation
 
 If you use this pipeline in your research, please cite:
 
 ```bibtex
-@article{tran2024_cre_pipeline,
+@article{chahal2024_cre_pipeline,
   title={Cell- and Tissue-specific Cis-Regulatory Element Pipeline for Understanding Human Gonadal Development},
   author={Chahal, Gulrez and Pachernegg, Svenja and Tran, Ngoc Duy and Rossello, Fernando and Ramialison, Mirana},
   journal={Journal Name},
@@ -505,10 +434,10 @@ For questions, issues, or collaborations, please contact:
 ### Laboratory Information
 
 **Ramialison Laboratory**
-- Systems Biology & Gene Regulation
+- Transcriptomics and Bioinformatics
 - Murdoch Children's Research Institute
 - 50 Flemington Road, Parkville VIC 3052, Australia
-- Web: [https://www.mcri.edu.au/users/mirana-ramialison](https://www.mcri.edu.au/users/mirana-ramialison)
+- Web: [Transcriptomics and Bioinformatics Lab - Murdoch Children's Research Institute](https://www.mcri.edu.au/research/research-areas/stem-cell-medicine/transcriptomics-and-bioinformatics)
 
 ## 📄 License
 
