@@ -453,10 +453,7 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 ## 🙏 Acknowledgments
 
 - **10X Genomics** for single-cell ATAC-seq technology
-- **Human Developmental Biology Resource (HDBR)** for tissue samples  
-- **Melbourne Research Cloud** for computational infrastructure
-- **National Health and Medical Research Council (NHMRC)** for funding support
-- **Victorian Government** for operational infrastructure support
+
 
 ---
 
